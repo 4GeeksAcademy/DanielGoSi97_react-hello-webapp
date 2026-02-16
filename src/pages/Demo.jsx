@@ -6,6 +6,8 @@ export const Demo = () => {
   // Access the global state and dispatch function using the useGlobalReducer hook.
   const { store, dispatch } = useGlobalReducer()
 
+
+
   return (
     <div className="container">
       <ul className="list-group">
@@ -35,6 +37,7 @@ export const Demo = () => {
       </ul>
       <br />
 
+    
       <Link to="/">
         <button className="btn btn-primary">Back home</button>
       </Link>
