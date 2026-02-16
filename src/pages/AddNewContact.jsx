@@ -17,7 +17,7 @@ export const AddNewContact = () => {
             fetch(`https://playground.4geeks.com/contact/agendas/Agenda_Persona_01/contacts`)
                 .then(reponse => reponse.json())
                 .then(data => {
-                    const contactEditado = data.contacts.find(c => c.id == id);
+                    const contactEditado = data.contacts.find((contact) => contact.id == id);
                     if (contactEditado) setContact(contactEditado);
                 });
         }
