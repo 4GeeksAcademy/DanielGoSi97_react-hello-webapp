@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import useGlobalReducer from "../hooks/useGlobalReducer.jsx";
+import { Link } from "react-router-dom";
 
 export const Home = () => {
 
@@ -42,8 +43,10 @@ export const Home = () => {
 	return (
 		<div className="container mt-5">
 			<div className="d-flex justify-content-between aling-items-center mb-4">
-				<h1>Contact List</h1>
-				<button type="button" className="btn btn-success">Add New Contact</button>
+				<h1>Lista de contactos</h1>
+				<Link to="/NuevoContacto">
+					<button type="button" className="btn btn-success">Add New Contact</button>
+				</Link>
 			</div>
 			<br />
 			<ul className="list-group w-100">
@@ -64,8 +67,17 @@ export const Home = () => {
 						<p>Email: {item.email}</p>
 						<p>Address: {item.address}</p>							          
 					</div>
-					<button className="me-4">Actualizar</button>
-					<button className="me-4" onClick={() => deleteContact(item.id)}>Eliminar</button>
+
+					<div>
+						<Link to={`/EditarContacto/${item.id}`}>
+							<button className="btn btn-outline-primary me-2">
+								<i className="fas fa-pencil-alt"></i> Actualizar
+							</button>
+						</Link>
+						<button className="btn btn-outline-danger me-2" onClick={() => deleteContact(item.id)}>
+							<i className="fas fa-trash-alt"></i> Eliminar
+						</button>
+					</div>
 				</li>
 			);
 			})}
