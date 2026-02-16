@@ -38,6 +38,7 @@ export const Home = () => {
     //   payload: {indexToDelete: indexToDelete}
     // })
   }
+
 	return (
 		<div className="container mt-5">
 			<div className="d-flex justify-content-between aling-items-center mb-4">
@@ -63,7 +64,7 @@ export const Home = () => {
 						<p>Email: {item.email}</p>
 						<p>Address: {item.address}</p>							          
 					</div>
-					<button className="me-4" onClick={() => deleteContact(item.id)}>Actualizar</button>
+					<button className="me-4">Actualizar</button>
 					<button className="me-4" onClick={() => deleteContact(item.id)}>Eliminar</button>
 				</li>
 			);
