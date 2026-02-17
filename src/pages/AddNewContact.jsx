@@ -17,8 +17,9 @@ export const AddNewContact = () => {
             fetch(`https://playground.4geeks.com/contact/agendas/Agenda_Persona_01/contacts`)
                 .then(reponse => reponse.json())
                 .then(data => {
+                    //console.log("API:", data);
                     const contactEditado = data.contacts.find((contact) => contact.id == id);
-                    if (contactEditado != null) {setContact(contactEditado)};
+                    if (contactEditado) setContact(contactEditado);
                 });
         }
     }, [id])
@@ -30,12 +31,11 @@ export const AddNewContact = () => {
         e.preventDefault();
 
         let url;
-
         if(id != null) { url = `https://playground.4geeks.com/contact/agendas/Agenda_Persona_01/contacts/${id}`}
         else { url = `https://playground.4geeks.com/contact/agendas/Agenda_Persona_01/contacts`} 
 
-        let method;
 
+        let method;
         if(id != null) {
             method = "PUT";
         } else {
