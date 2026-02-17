@@ -13,12 +13,12 @@ export const AddNewContact = () => {
         })
 
     useEffect(() => {
-        if (id) {
+        if (id != null) {
             fetch(`https://playground.4geeks.com/contact/agendas/Agenda_Persona_01/contacts`)
                 .then(reponse => reponse.json())
                 .then(data => {
                     const contactEditado = data.contacts.find((contact) => contact.id == id);
-                    if (contactEditado) setContact(contactEditado);
+                    if (contactEditado != null) {setContact(contactEditado)};
                 });
         }
     }, [id])
@@ -29,9 +29,18 @@ export const AddNewContact = () => {
         const handleSubmit = (e) => {
         e.preventDefault();
 
-        const url = id ? `https://playground.4geeks.com/contact/agendas/Agenda_Persona_01/contacts/${id}` : `https://playground.4geeks.com/contact/agendas/Agenda_Persona_01/contacts`;
-        
-        const method = id ? "PUT" : "POST";
+        let url;
+
+        if(id != null) { url = `https://playground.4geeks.com/contact/agendas/Agenda_Persona_01/contacts/${id}`}
+        else { url = `https://playground.4geeks.com/contact/agendas/Agenda_Persona_01/contacts`} 
+
+        let method;
+
+        if(id != null) {
+            method = "PUT";
+        } else {
+            method = "POST";
+        }
 
         fetch(url, {
             method: method,
