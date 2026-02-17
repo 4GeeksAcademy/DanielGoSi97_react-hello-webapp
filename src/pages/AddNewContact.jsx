@@ -29,9 +29,7 @@ export const AddNewContact = () => {
         const handleSubmit = (e) => {
         e.preventDefault();
 
-        const url = id 
-            ? `https://playground.4geeks.com/contact/agendas/Agenda_Persona_01/contacts/${id}`
-            : `https://playground.4geeks.com/contact/agendas/Agenda_Persona_01/contacts`;
+        const url = id ? `https://playground.4geeks.com/contact/agendas/Agenda_Persona_01/contacts/${id}` : `https://playground.4geeks.com/contact/agendas/Agenda_Persona_01/contacts`;
         
         const method = id ? "PUT" : "POST";
 
