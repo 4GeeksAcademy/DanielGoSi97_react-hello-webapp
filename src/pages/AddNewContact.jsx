@@ -24,22 +24,18 @@ export const AddNewContact = () => {
         }
     }, [id])
     
-        const handleChange = (e) => {
-        setContact({ ...contact, [e.target.name]: e.target.value });
+        const handleChange = (event) => {
+        setContact({ ...contact, [event.target.name]: event.target.value });
          };
-        const handleSubmit = (e) => {
-        e.preventDefault();
-
-        let url;
-        if(id != null) { url = `https://playground.4geeks.com/contact/agendas/Agenda_Persona_01/contacts/${id}`}
-        else { url = `https://playground.4geeks.com/contact/agendas/Agenda_Persona_01/contacts`} 
-
-
-        let method;
-        if(id != null) {
+        const handleSubmit = (event) => {
+        event.preventDefault();
+        
+        let url = "https://playground.4geeks.com/contact/agendas/Agenda_Persona_01/contacts";
+        let method = "POST";
+        
+        if(id != null){
+            url = url +"/"+id;
             method = "PUT";
-        } else {
-            method = "POST";
         }
 
         fetch(url, {
